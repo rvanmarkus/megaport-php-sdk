@@ -1,0 +1,37 @@
+POST https://api-staging.megaport.com/v2/login?username=jeroen.vanderlaan@eurofiber.com&password=hKFLAv2TPT7zkyU
+
+@token = 1eced88c-d5d6-4973-a210-5f0c2e0e4630
+@locationams = 298
+
+
+### Get Megaport locations (datacenters)
+
+GET https://api-staging.megaport.com/v2/locations
+Content-Type: application/json
+X-Auth-Token: {{token}}
+
+
+### Get invoices
+GET https://api-staging.megaport.com/v2/invoice
+Content-Type: application/json
+X-Auth-Token: {{token}}
+
+
+### Buy port
+POST https://api-staging.megaport.com/v2/networkdesign/buy
+Content-Type: application/json
+X-Auth-Token: {{token}}
+
+[
+    {
+        "locationId":{{locationams}},
+        "term":12,
+        "productName":"test",
+        "productType":"MEGAPORT",
+        "createDate":1568228242000,
+        "portSpeed":1000,
+        "virtual":false,
+        "market":"NL"
+    }
+]
+

@@ -1,0 +1,34 @@
+{
+    "name": "eurofiber/megaport-php-sdk",
+    "description": "Implementation of the Megaport API written in PHP 7",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Megaport\\": "src/",
+            "Tests\\" : "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "guzzlehttp/guzzle": "^6.3",
+        "jms/serializer": "^3.2",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4",
+        "symfony/var-dumper": "^4.3",
+        "dg/bypass-finals": "^1.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeroen van der Laan",
+            "email": "jeroen.vanderlaan@eurofiber.com"
+        },
+        {
+            "name": "Geoffrey Hofstede",
+            "email": "geoffrey.hofstede@eurofiber.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
