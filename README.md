@@ -20,44 +20,18 @@ the production URL in your implementation will make sure the code is executed ag
 
 ## Security Functions
 
-The login functionality is hidden in a LoginClient object that handles the login parts and will return a
-Login object instance that can be used in other Client objects.
+The login functionality is present on the MegaportClient object.
 
-To do a security things just use the following code snippets
 ### Login
 ```php
 <?php
-use Megaport\Client\Security\LoginClient;
+use Megaport\Client\MegaportClient;
+use Megaport\Component\Environment;
 
-$client = new LoginClient();
-$login  = $client->loginWithUserDetails('username', 'password');
+$client = new MegaportClient(Environment::ENV_STAGING);
+$client->auth('MY_MEGAPORT_USERNAME', 'MY_MEGAPORT_PASSWORD');
 ```
 
-It is also possible to login with token, change password and logout.
-
-### login with token
-```php
-<?php
-$loginWithToken = $client->loginWithToken($login->getToken());
-```
-
-### change password
-```php
-<?php
-use Megaport\Client\Security\LoginClient;
-
-$loginClient = new LoginClient($login);
-$loginClient->changePassword('oldPassword', 'newPassword');
-```
-
-### Logout
-```php
-<?php
-use Megaport\Client\Security\LoginClient;
-
-$loginClient = new LoginClient($login);
-$loginClient->logout();
-```
 
 ## Lists used for ordering functions
 For these functions a seperate client is available called `ListClient` in the ordering namespace.
@@ -67,22 +41,23 @@ These functions include the functions for getting locations, PartnerMegaports an
 *Example for getting list ordering data*
 ```php
 <?php
-use GuzzleHttp\Exception\GuzzleException;
-use Megaport\Client\Order\ListClient;
 use Megaport\Model\Order\Location;
+use Megaport\Client\MegaportClient;
+use Megaport\Component\Environment;
 
-$listClient = new ListClient($login);
+$client = new MegaportClient(Environment::ENV_STAGING);
+$client->auth('MY_MEGAPORT_USERNAME', 'MY_MEGAPORT_PASSWORD');
+
 try {
-    $locations = $listClient->getLocations();
+    $locations = $client->getLocations();
 
     /**
      * @var Location $dutchLocation Dutch location.
      */
-    $dutchLocation = ApiFunctions::getDutchLocation($locations);
 
-    $partnerMps = $listClient->getPartnerMegaports();
-    $ix = $listClient->getInternetExchanges($dutchLocation->getId());
-} catch (GuzzleException $e) {
+    $partnerMps = $client->getPartnerMegaports();
+    $ix = $client->getInternetExchanges($locations[0]->getId());
+} catch (Exception $e) {
     die('an error occurred');
 }
 ```
