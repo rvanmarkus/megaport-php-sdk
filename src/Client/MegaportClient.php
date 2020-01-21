@@ -215,7 +215,7 @@ class MegaportClient
     public function lookup(string $cloudtype, string $serviceKey)
     {
         $client = null;
-        switch ($cloudtype) {
+        switch (strtoupper($cloudtype)) {
             case CloudProduct::CLOUD_TYPE_AZURE:
                 $client = new AzureLookupClient($this->client);
                 break;
