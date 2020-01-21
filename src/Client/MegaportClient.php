@@ -164,6 +164,23 @@ class MegaportClient
     }
 
     /**
+     * Validate the orderable product seperately. Is also done internally when ordered.
+     *
+     * @param OrderableProduct $orderableProduct
+     * @return boolean
+     * @throws MegaportException in case of any errors
+     */
+    public function validateOrder(OrderableProduct $orderableProduct): bool 
+    {
+        $orderClient = new OrderClient($this->client);
+        try {
+            return $orderClient->validate($orderableProduct);
+        } catch (GuzzleException | Exception $e) {
+            throw new MegaportException(999, $e->getMessage(), $e);
+        }
+    }
+
+    /**
      * @param OrderableProduct $orderableProduct
      *
      * @return \Megaport\Model\Order\Order
