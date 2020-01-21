@@ -15,6 +15,7 @@ use Megaport\Model\Product\IX;
 use Megaport\Model\Product\PartnerMegaport;
 use Megaport\Model\Product\Product;
 use Megaport\Model\Security\Login;
+use Megaport\Order\Product\Cloud\CloudProduct;
 use UnexpectedValueException;
 
 /**
@@ -215,7 +216,7 @@ class MegaportClient
     {
         $client = null;
         switch ($cloudtype) {
-            case 'Azure':
+            case CloudProduct::CLOUD_TYPE_AZURE:
                 $client = new AzureLookupClient($this->client);
                 break;
             default:

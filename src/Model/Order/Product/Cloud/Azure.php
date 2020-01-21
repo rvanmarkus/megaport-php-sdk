@@ -5,11 +5,11 @@ namespace Megaport\Model\Order\Product\Cloud;
 use Megaport\Model\Order\Product\AssocVxc;
 use Megaport\Model\Order\Product\CloudVlan;
 use Megaport\Model\Order\Product\PortVlan;
-use Megaport\Model\Order\Product\Product;
 use Megaport\Model\Product\Cloud\CloudMegaport;
 use JMS\Serializer\Annotation as Serializer;
+use Megaport\Order\Product\Cloud\CloudProduct;
 
-class Azure extends Product
+class Azure extends CloudProduct
 {
     /**
      * @var string
@@ -26,14 +26,14 @@ class Azure extends Product
      * Azure constructor.
      *
      * @param string $name
-     * @param CloudMegaport $cloudMegaport
      * @param PortVlan $primary
+     * @param CloudMegaport $cloudMegaport\
      * @param int $rateLimit
      */
     public function __construct(
         string $name,
-        CloudMegaport $cloudMegaport,
         PortVlan $primary,
+        CloudMegaport $cloudMegaport,
         int $rateLimit = 550
     ) {
         parent::__construct();
@@ -44,7 +44,7 @@ class Azure extends Product
             $primary,
             new CloudVlan(
                 $cloudMegaport->getProductUid(),
-                'AZURE',
+                self::CLOUD_TYPE_AZURE,
                 $cloudMegaport->getServiceKey()
             ),
             $rateLimit
