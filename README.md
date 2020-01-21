@@ -32,6 +32,35 @@ $client = new MegaportClient(Environment::ENV_STAGING);
 $client->auth('MY_MEGAPORT_USERNAME', 'MY_MEGAPORT_PASSWORD');
 ```
 
+## Product details
+The following methods are available on the `MegaportClient`:
+* getProducts
+* getProduct
+
+These methods allow you to retrieve detailed information regarding the products you have available in Megaport.
+
+*Example for getting all product information*
+```php
+<?php
+use Megaport\Client\MegaportClient;
+use Megaport\Component\Environment;
+
+$client = new MegaportClient(Environment::ENV_STAGING);
+$client->auth('MY_MEGAPORT_USERNAME', 'MY_MEGAPORT_PASSWORD');
+$products = $client->getProducts();
+```
+
+*Example for getting product information for a specific product*
+```php
+<?php
+use Megaport\Client\MegaportClient;
+use Megaport\Component\Environment;
+
+$client = new MegaportClient(Environment::ENV_STAGING);
+$client->auth('MY_MEGAPORT_USERNAME', 'MY_MEGAPORT_PASSWORD');
+$product = $client->getProduct('PRODUCT_UUID');
+```
+
 
 ## Lists used for ordering functions
 For these functions a seperate client is available called `ListClient` in the ordering namespace.

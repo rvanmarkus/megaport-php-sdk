@@ -111,7 +111,21 @@ class MegaportClient
     public function getProducts(): ?array
     {
         try {
-            return (new ProductClient($this->client))->get();
+            return (new ProductClient($this->client))->getList();
+        } catch (GuzzleException | Exception $e) {
+            throw new MegaportException(999, $e->getMessage(), $e);
+        }
+    }
+
+    /**
+     * @param string $uuid
+     *
+     * @return Product|object
+     */
+    public function getProduct(string $uuid): ?Product
+    {
+        try {
+            return (new ProductClient($this->client))->get($uuid);
         } catch (GuzzleException | Exception $e) {
             throw new MegaportException(999, $e->getMessage(), $e);
         }
