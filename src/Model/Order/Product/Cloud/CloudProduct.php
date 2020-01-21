@@ -1,6 +1,6 @@
 <?php
 
-namespace Megaport\Order\Product\Cloud;
+namespace Megaport\Model\Order\Product\Cloud;
 
 use Megaport\Model\Order\Product\Product;
 

@@ -7,7 +7,6 @@ use Megaport\Model\Order\Product\CloudVlan;
 use Megaport\Model\Order\Product\PortVlan;
 use Megaport\Model\Product\Cloud\CloudMegaport;
 use JMS\Serializer\Annotation as Serializer;
-use Megaport\Order\Product\Cloud\CloudProduct;
 
 class Azure extends CloudProduct
 {

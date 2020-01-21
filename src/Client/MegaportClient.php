@@ -10,12 +10,12 @@ use Megaport\Component\Environment;
 use Megaport\Exception\MegaportException;
 use Megaport\Model\Order\Location;
 use Megaport\Model\Order\Order;
+use Megaport\Model\Order\Product\Cloud\CloudProduct;
 use Megaport\Model\Order\Product\OrderableProduct;
 use Megaport\Model\Product\IX;
 use Megaport\Model\Product\PartnerMegaport;
 use Megaport\Model\Product\Product;
 use Megaport\Model\Security\Login;
-use Megaport\Order\Product\Cloud\CloudProduct;
 use UnexpectedValueException;
 
 /**
