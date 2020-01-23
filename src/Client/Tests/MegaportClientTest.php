@@ -13,7 +13,7 @@ class MegaportClientTest extends TestCase
 
     public function testAuth()
     {
-        /** @var MockObject | MegaportClient $clientMock */
+        /** @var MockObject $clientMock */
         $clientMock = $this->getMockBuilder(MegaportClient::class)->onlyMethods(['doLogin'])->disableOriginalConstructor()->getMock();
 
         $clientMock->method('doLogin')
@@ -22,6 +22,8 @@ class MegaportClientTest extends TestCase
 
         $this->expectException(MegaportException::class);
         $this->expectExceptionCode(MegaportException::CODE_OTHER);
+        
+        /** @var MegaportClient $clientMock */
         $clientMock->auth('a', 'b');
     }
 }
