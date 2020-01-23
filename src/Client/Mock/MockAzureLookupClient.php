@@ -29,7 +29,7 @@ class MockAzureLookupClient extends AbstractClient {
         $json = json_encode(json_decode('{
             "message": "Successful lookup",
             "data": {
-              "bandwidth": 50,
+              "bandwidth": 500,
               "megaports": [
                 {
                   "port": 100,
