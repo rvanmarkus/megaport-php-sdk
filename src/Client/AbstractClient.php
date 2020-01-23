@@ -17,7 +17,7 @@ class AbstractClient
     /**
      * @var \JMS\Serializer\SerializerInterface
      */
-    private $serializer;
+    protected $serializer;
 
     /**
      * AbstractClient constructor.

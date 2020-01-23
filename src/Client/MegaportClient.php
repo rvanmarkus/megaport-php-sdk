@@ -6,6 +6,7 @@ use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use InvalidArgumentException;
+use Megaport\Client\Mock\MockAzureLookupClient;
 use Megaport\Component\Environment;
 use Megaport\Exception\MegaportException;
 use Megaport\Model\Order\Location;
@@ -226,7 +227,7 @@ class MegaportClient
      * @throws GuzzleException
      * @throws \UnexpectedValueException
      */
-    public function lookup(string $cloudtype, string $serviceKey)
+    public function lookup(string $cloudtype, string $serviceKey, $test = false)
     {
         $client = null;
         switch (strtoupper($cloudtype)) {
@@ -235,6 +236,11 @@ class MegaportClient
                 break;
             default:
                 throw new UnexpectedValueException('Request type (' . $cloudtype . ') is not supported');
+        }
+
+
+        if ($test) {
+            $client = new MockAzureLookupClient($this->client);   
         }
 
         return $client->lookup($serviceKey);
