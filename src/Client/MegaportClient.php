@@ -138,13 +138,23 @@ class MegaportClient
      * @return Location[]
      * @throws MegaportException
      */
-    public function getLocations(): array
+    public function getLocations(string $country = null): array
     {
         try {
-            return (new ListClient($this->client))->getLocations();
+            $locations = (new ListClient($this->client))->getLocations();
         } catch (GuzzleException | Exception $e) {
             throw new MegaportException(999, $e->getMessage(), $e);
         }
+
+        if ($country) {
+            foreach ($locations as $key => $location) {
+                if ($location->getCountry() !== $country) {
+                    unset($locations[$key]);
+                }
+            }
+        }
+
+        return $locations;
     }
 
     /**
