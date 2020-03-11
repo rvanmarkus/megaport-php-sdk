@@ -45,4 +45,36 @@ class AssocVxc
         $this->aEnd = ['vlan' => $aEnd->getVlan()];
         $this->bEnd = $bEnd->getBEndConfig();
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRateLimit(): int
+    {
+        return $this->rateLimit;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAEnd(): array
+    {
+        return $this->aEnd;
+    }
+
+    /**
+     * @return array
+     */
+    public function getBEnd(): array
+    {
+        return $this->bEnd;
+    }
 }
