@@ -80,10 +80,6 @@ $client->auth('MY_MEGAPORT_USERNAME', 'MY_MEGAPORT_PASSWORD');
 try {
     $locations = $client->getLocations();
 
-    /**
-     * @var Location $dutchLocation Dutch location.
-     */
-
     $partnerMps = $client->getPartnerMegaports();
     $ix = $client->getInternetExchanges($locations[0]->getId());
 } catch (Exception $e) {
