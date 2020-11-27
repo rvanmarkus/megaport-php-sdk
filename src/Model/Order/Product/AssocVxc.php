@@ -10,7 +10,7 @@ class AssocVxc
      * @var string
      * @SerializerX\Type("string")
      */
-    private $name;
+    private $productName;
 
     /**
      * @var int
@@ -33,14 +33,14 @@ class AssocVxc
     /**
      * AssocVxc constructor.
      *
-     * @param string $name
+     * @param string $productName
      * @param \Megaport\Model\Order\Product\ConnectableProduct $aEnd
      * @param \Megaport\Model\Order\Product\ConnectableProduct $bEnd
      * @param int $rateLimit
      */
-    public function __construct(string $name, ConnectableProduct $aEnd, ConnectableProduct $bEnd, $rateLimit = 550)
+    public function __construct(string $productName, ConnectableProduct $aEnd, ConnectableProduct $bEnd, $rateLimit = 550)
     {
-        $this->name = $name;
+        $this->productName = $productName;
         $this->rateLimit = $rateLimit;
         $this->aEnd = ['vlan' => $aEnd->getVlan()];
         $this->bEnd = $bEnd->getBEndConfig();
@@ -51,7 +51,7 @@ class AssocVxc
      */
     public function getName(): string
     {
-        return $this->name;
+        return $this->productName;
     }
 
     /**
