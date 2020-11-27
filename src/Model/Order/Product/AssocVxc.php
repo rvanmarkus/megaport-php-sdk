@@ -34,8 +34,8 @@ class AssocVxc
      * AssocVxc constructor.
      *
      * @param string $productName
-     * @param \Megaport\Model\Order\Product\ConnectableProduct $aEnd
-     * @param \Megaport\Model\Order\Product\ConnectableProduct $bEnd
+     * @param \Megaport\Model\Order\Product\PortVlan $aEnd
+     * @param \Megaport\Model\Order\Product\CloudVlan $bEnd
      * @param int $rateLimit
      */
     public function __construct(string $productName, PortVlan $aEnd, CloudVlan $bEnd, $rateLimit = 550)
