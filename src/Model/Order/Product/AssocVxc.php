@@ -39,7 +39,7 @@ class AssocVxc
      * @param \Megaport\Model\Order\Product\ConnectableProduct $bEnd
      * @param int $rateLimit
      */
-    public function __construct(string $name, PortVlan $aEnd, CloudVlan $bEnd, $rateLimit = 550)
+    public function __construct(string $name, PortVlan $aEnd, ConnectableProduct $bEnd, $rateLimit = 550)
     {
         $this->name = $name;
         $this->rateLimit = $rateLimit;
